@@ -387,4 +387,11 @@
   });
 
   render();
+
+  // ---------- PWA: offline support ----------
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => { /* offline support unavailable */ });
+    });
+  }
 })();

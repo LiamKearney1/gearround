@@ -19,11 +19,26 @@ Filters are shared between Marketplace and Search, and saved listings and prefer
 
 All listings, people and messages are sample data. There are no accounts, no real messaging, and the **+**, Edit profile and conversation buttons show a "coming soon" note. Those need a backend (for example Supabase or Firebase).
 
+## Install it as an app (PWA)
+
+GearRound is a Progressive Web App. Once the site is live (see below), people can add it to their home screen and it opens full screen like a regular app, even with no internet.
+
+- **iPhone (Safari):** tap **Share**, then **Add to Home Screen**.
+- **Android (Chrome):** tap the **Install app** prompt, or open the **⋮** menu and choose **Install app**.
+- **Computer (Chrome or Edge):** click the install icon at the right end of the address bar.
+
+Installing needs the site to be served over HTTPS (GitHub Pages does this). It won't install from a file opened directly on your computer.
+
+**When you change the site:** open `sw.js` and bump `VERSION` (for example `gearround-v1` → `gearround-v2`). That tells installed copies to download the new files.
+
 ## Files
 
 - `index.html`: page shell and bottom tab bar
 - `styles.css`: all styling (light and dark mode)
 - `app.js`: sample data, filters and the four pages
+- `manifest.webmanifest`: app name, colors and icons used when installing
+- `sw.js`: service worker that caches the app so it works offline
+- `icons/`: app icons (`icon.svg` is the source; the PNGs are generated from it)
 
 ## Run locally
 
