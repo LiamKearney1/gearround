@@ -1,6 +1,6 @@
 /* GearRound service worker: precaches the app shell so it opens offline.
    Bump VERSION whenever you change any file below so users get the update. */
-const VERSION = 'gearround-v2';
+const VERSION = 'gearround-v3';
 const SHELL = [
   './',
   './index.html',
@@ -17,8 +17,13 @@ const SHELL = [
 const FONT_CACHE = 'gearround-fonts';
 
 self.addEventListener('install', (event) => {
+  // Don't take over right away: the page shows an "Update available" banner
+  // and tells this worker to activate when the person taps Refresh.
   event.waitUntil(caches.open(VERSION).then((cache) => cache.addAll(SHELL)));
-  self.skipWaiting();
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {

@@ -29,7 +29,9 @@ GearRound is a Progressive Web App. Once the site is live (see below), people ca
 
 Installing needs the site to be served over HTTPS (GitHub Pages does this). It won't install from a file opened directly on your computer.
 
-**When you change the site:** open `sw.js` and bump `VERSION` (for example `gearround-v1` → `gearround-v2`). That tells installed copies to download the new files.
+**When you change the site:** open `sw.js` and bump `VERSION` (for example `gearround-v3` → `gearround-v4`). That tells installed copies to download the new files. If you forget, installed copies keep showing the old version.
+
+**How people get updates:** each time the app is opened or brought back to the foreground, it checks for a new version. When one has downloaded, a banner appears: "A new version of GearRound is ready." **Refresh** reloads into the new version right away. **Later** hides the banner, and the update applies the next time the app is fully closed and reopened.
 
 ## Files
 

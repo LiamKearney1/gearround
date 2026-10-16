@@ -392,10 +392,49 @@
 
   render();
 
-  // ---------- PWA: offline support ----------
+  // ---------- PWA: offline support and update banner ----------
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    const banner = document.getElementById('update-banner');
+    let waitingWorker = null;
+    let refreshing = false;
+
+    // Only offer an update when a previous version is already running
+    function offerUpdate(worker) {
+      if (!worker || !navigator.serviceWorker.controller) return;
+      waitingWorker = worker;
+      banner.hidden = false;
+    }
+
+    banner.addEventListener('click', (e) => {
+      const choice = e.target.closest('[data-update]');
+      if (!choice) return;
+      if (choice.dataset.update === 'refresh' && waitingWorker) {
+        refreshing = true;
+        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+      banner.hidden = true;
+    });
+
+    // The new version took over: reload once so the page uses it
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) location.reload();
+    });
+
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').catch(() => { /* offline support unavailable */ });
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        if (reg.waiting) offerUpdate(reg.waiting);
+        reg.addEventListener('updatefound', () => {
+          const worker = reg.installing;
+          if (!worker) return;
+          worker.addEventListener('statechange', () => {
+            if (worker.state === 'installed') offerUpdate(worker);
+          });
+        });
+        // Check for a new version whenever the app comes back to the foreground
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') reg.update().catch(() => {});
+        });
+      }).catch(() => { /* offline support unavailable */ });
     });
   }
 })();
