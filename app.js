@@ -4,16 +4,16 @@
 
   // ---------- Sample data ----------
   const LISTINGS = [
-    { id: 1, title: 'Baseball glove, 11"', size: 'Ages 7–9', condition: 'Good', sport: 'Baseball', seller: 'Jen K.', location: 'Beverly, MA', miles: 3, cost: 15, types: ['Sale', 'Trade'], delivery: ['In person'] },
-    { id: 2, title: 'Soccer cleats', size: 'Youth size 2', condition: 'Like new', sport: 'Soccer', seller: 'Marcus T.', location: 'Salem, MA', miles: 6, cost: 0, types: ['Give-away'], delivery: ['In person'] },
-    { id: 3, title: 'Hockey helmet w/ cage', size: 'Youth S', condition: 'Good', sport: 'Hockey', seller: 'Dana R.', location: 'Peabody, MA', miles: 9, cost: 25, types: ['Sale'], delivery: ['Shipped', 'In person'] },
-    { id: 4, title: 'Shin guards (2 pairs)', size: 'Ages 5–7', condition: 'Well loved', sport: 'Soccer', seller: 'Priya S.', location: 'Danvers, MA', miles: 12, cost: 0, types: ['Give-away', 'Trade'], delivery: ['In person'] },
-    { id: 5, title: 'Lacrosse stick', size: 'Youth 37"', condition: 'Fair', sport: 'Lacrosse', seller: 'Tom B.', location: 'Marblehead, MA', miles: 18, cost: 0, types: ['Trade'], delivery: ['Shipped'] },
-    { id: 6, title: 'Football shoulder pads', size: 'Youth M', condition: 'Good', sport: 'Football', seller: 'Alicia W.', location: 'Lynn, MA', miles: 22, cost: 30, types: ['Sale', 'Give-away', 'Trade'], delivery: ['In person'] },
-    { id: 7, title: 'Basketball, size 5', size: 'Ages 9–11', condition: 'Like new', sport: 'Basketball', seller: 'Sam L.', location: 'Swampscott, MA', miles: 4, cost: 8, types: ['Sale'], delivery: ['Shipped', 'In person'] },
-    { id: 8, title: 'Batting helmet', size: 'Youth', condition: 'New', sport: 'Baseball', seller: 'Chris P.', location: 'Beverly, MA', miles: 2, cost: 0, types: ['Give-away'], delivery: ['In person'] },
+    { id: 1, title: 'Baseball glove, 11"', size: 'Ages 7–9', condition: 'Good', sport: 'Baseball', seller: 'Jen K.', location: 'Beverly, MA', miles: 3, cost: 15, types: ['Sale', 'Trade'], delivery: ['In person'], photo: 'images/listings/baseball-glove.jpg' },
+    { id: 2, title: 'Soccer cleats', size: 'Youth size 2', condition: 'Like new', sport: 'Soccer', seller: 'Marcus T.', location: 'Salem, MA', miles: 6, cost: 0, types: ['Give-away'], delivery: ['In person'], photo: 'images/listings/soccer-cleats.jpg' },
+    { id: 3, title: 'Hockey helmet w/ cage', size: 'Youth S', condition: 'Good', sport: 'Hockey', seller: 'Dana R.', location: 'Peabody, MA', miles: 9, cost: 25, types: ['Sale'], delivery: ['Shipped', 'In person'], photo: 'images/listings/hockey-helmet.jpg', photoPosition: 'center top' },
+    { id: 4, title: 'Shin guards (2 pairs)', size: 'Ages 5–7', condition: 'Well loved', sport: 'Soccer', seller: 'Priya S.', location: 'Danvers, MA', miles: 12, cost: 0, types: ['Give-away', 'Trade'], delivery: ['In person'], photo: 'images/listings/shin-guards.jpg' },
+    { id: 5, title: 'Lacrosse stick', size: 'Youth 37"', condition: 'Fair', sport: 'Lacrosse', seller: 'Tom B.', location: 'Marblehead, MA', miles: 18, cost: 0, types: ['Trade'], delivery: ['Shipped'], photo: 'images/listings/lacrosse-stick.jpg', photoPosition: 'center top' },
+    { id: 6, title: 'Football shoulder pads', size: 'Youth M', condition: 'Good', sport: 'Football', seller: 'Alicia W.', location: 'Lynn, MA', miles: 22, cost: 30, types: ['Sale', 'Give-away', 'Trade'], delivery: ['In person'], photo: 'images/listings/football-pads.jpg' },
+    { id: 7, title: 'Basketball, size 5', size: 'Ages 9–11', condition: 'Like new', sport: 'Basketball', seller: 'Sam L.', location: 'Swampscott, MA', miles: 4, cost: 8, types: ['Sale'], delivery: ['Shipped', 'In person'], photo: 'images/listings/basketball.jpg' },
+    { id: 8, title: 'Batting helmet', size: 'Youth', condition: 'New', sport: 'Baseball', seller: 'Chris P.', location: 'Beverly, MA', miles: 2, cost: 0, types: ['Give-away'], delivery: ['In person'], photo: 'images/listings/batting-helmet.jpg' },
     { id: 9, title: 'Hockey skates', size: 'Youth 3', condition: 'Good', sport: 'Hockey', seller: 'Nina F.', location: 'Wenham, MA', miles: 31, cost: 40, types: ['Sale', 'Trade'], delivery: ['Shipped'] },
-    { id: 10, title: 'Soccer ball, size 4', size: 'Ages 8–12', condition: 'Fair', sport: 'Soccer', seller: 'Owen H.', location: 'Salem, MA', miles: 7, cost: 0, types: ['Give-away'], delivery: ['In person'] }
+    { id: 10, title: 'Soccer ball, size 4', size: 'Ages 8–12', condition: 'Fair', sport: 'Soccer', seller: 'Owen H.', location: 'Salem, MA', miles: 7, cost: 0, types: ['Give-away'], delivery: ['In person'], photo: 'images/listings/soccer-ball.jpg' }
   ];
 
   const TYPES = ['Sale', 'Give-away', 'Trade'];
@@ -110,7 +110,13 @@
     const saved = state.saved.includes(l.id);
     return (
       '<article class="card">' +
-        '<div class="photo">' + ICON.photo +
+        '<div class="photo">' +
+          (l.photo
+            ? '<img src="' + esc(l.photo) + '" alt="' + esc(l.title) + '"' +
+              (l.photoPosition ? ' style="object-position:' + esc(l.photoPosition) + '"' : '') +
+              ' loading="lazy" decoding="async" onerror="this.remove()">'
+            : '') +
+          ICON.photo +
           '<button type="button" class="save-btn" aria-pressed="' + saved + '" aria-label="' + (saved ? 'Unsave ' : 'Save ') + esc(l.title) + '" data-action="save" data-value="' + l.id + '">' + ICON.heart + '</button>' +
         '</div>' +
         '<div class="price">' + esc(priceOf(l)) + '</div>' +
@@ -387,4 +393,50 @@
   });
 
   render();
+
+  // ---------- PWA: offline support and update banner ----------
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    const banner = document.getElementById('update-banner');
+    let waitingWorker = null;
+    let refreshing = false;
+
+    // Only offer an update when a previous version is already running
+    function offerUpdate(worker) {
+      if (!worker || !navigator.serviceWorker.controller) return;
+      waitingWorker = worker;
+      banner.hidden = false;
+    }
+
+    banner.addEventListener('click', (e) => {
+      const choice = e.target.closest('[data-update]');
+      if (!choice) return;
+      if (choice.dataset.update === 'refresh' && waitingWorker) {
+        refreshing = true;
+        waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+      banner.hidden = true;
+    });
+
+    // The new version took over: reload once so the page uses it
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) location.reload();
+    });
+
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        if (reg.waiting) offerUpdate(reg.waiting);
+        reg.addEventListener('updatefound', () => {
+          const worker = reg.installing;
+          if (!worker) return;
+          worker.addEventListener('statechange', () => {
+            if (worker.state === 'installed') offerUpdate(worker);
+          });
+        });
+        // Check for a new version whenever the app comes back to the foreground
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') reg.update().catch(() => {});
+        });
+      }).catch(() => { /* offline support unavailable */ });
+    });
+  }
 })();

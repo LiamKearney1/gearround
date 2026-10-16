@@ -6,10 +6,18 @@
   <meta name="theme-color" content="#1F4FD1">
   <meta name="description" content="GearRound: buy, sell, trade and give away used youth sports gear near you.">
   <title>GearRound</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="GearRound">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=501158b3">
 </head>
 <body>
   <div class="app">
@@ -35,8 +43,14 @@
     </nav>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <div id="update-banner" class="update-banner" role="status" aria-live="polite" hidden>
+      <span>A new version of GearRound is ready.</span>
+      <button type="button" class="update-later" data-update="later">Later</button>
+      <button type="button" class="update-refresh" data-update="refresh">Refresh</button>
+    </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=91921622"></script>
 </body>
 </html>
