@@ -223,7 +223,16 @@ a { color: var(--accent); }
   z-index: 1;
 }
 .card .photo .icon { width: 36px; height: 36px; opacity: .55; }
-.card .photo .save-btn { z-index: 2; }
+.card .photo .save-btn { z-index: 2; box-shadow: 0 1px 4px rgba(0, 0, 0, .18); }
+/* Thin edge so photos with white backgrounds don't blend into the page */
+.card .photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08);
+  pointer-events: none;
+  z-index: 1;
+}
 .save-btn {
   position: absolute; top: 6px; right: 6px;
   width: 36px; height: 36px; border-radius: 18px;
