@@ -1,12 +1,12 @@
 /* GearRound service worker: precaches the app shell so it opens offline.
    VERSION and the ?v= hashes are set by `node tools/stamp.mjs`; run it after
    changing any file below (add new files to SHELL first) so users get the update. */
-const VERSION = 'gearround-02e8f8b587';
+const VERSION = 'gearround-7cdbe1d0ca';
 const SHELL = [
   './',
   './index.html',
   './styles.css?v=501158b3',
-  './app.js?v=43091a33',
+  './app.js?v=9ac8776e',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/icon-192.png',
@@ -16,7 +16,8 @@ const SHELL = [
   './icons/favicon-32.png',
   './images/listings/baseball-glove.jpg',
   './images/listings/soccer-cleats.jpg',
-  './images/listings/shin-guards.jpg'
+  './images/listings/shin-guards.jpg',
+  './images/listings/lacrosse-stick.jpg'
 ];
 const FONT_CACHE = 'gearround-fonts';
 

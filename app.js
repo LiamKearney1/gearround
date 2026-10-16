@@ -8,7 +8,7 @@
     { id: 2, title: 'Soccer cleats', size: 'Youth size 2', condition: 'Like new', sport: 'Soccer', seller: 'Marcus T.', location: 'Salem, MA', miles: 6, cost: 0, types: ['Give-away'], delivery: ['In person'], photo: 'images/listings/soccer-cleats.jpg' },
     { id: 3, title: 'Hockey helmet w/ cage', size: 'Youth S', condition: 'Good', sport: 'Hockey', seller: 'Dana R.', location: 'Peabody, MA', miles: 9, cost: 25, types: ['Sale'], delivery: ['Shipped', 'In person'] },
     { id: 4, title: 'Shin guards (2 pairs)', size: 'Ages 5–7', condition: 'Well loved', sport: 'Soccer', seller: 'Priya S.', location: 'Danvers, MA', miles: 12, cost: 0, types: ['Give-away', 'Trade'], delivery: ['In person'], photo: 'images/listings/shin-guards.jpg' },
-    { id: 5, title: 'Lacrosse stick', size: 'Youth 37"', condition: 'Fair', sport: 'Lacrosse', seller: 'Tom B.', location: 'Marblehead, MA', miles: 18, cost: 0, types: ['Trade'], delivery: ['Shipped'] },
+    { id: 5, title: 'Lacrosse stick', size: 'Youth 37"', condition: 'Fair', sport: 'Lacrosse', seller: 'Tom B.', location: 'Marblehead, MA', miles: 18, cost: 0, types: ['Trade'], delivery: ['Shipped'], photo: 'images/listings/lacrosse-stick.jpg', photoPosition: 'center top' },
     { id: 6, title: 'Football shoulder pads', size: 'Youth M', condition: 'Good', sport: 'Football', seller: 'Alicia W.', location: 'Lynn, MA', miles: 22, cost: 30, types: ['Sale', 'Give-away', 'Trade'], delivery: ['In person'] },
     { id: 7, title: 'Basketball, size 5', size: 'Ages 9–11', condition: 'Like new', sport: 'Basketball', seller: 'Sam L.', location: 'Swampscott, MA', miles: 4, cost: 8, types: ['Sale'], delivery: ['Shipped', 'In person'] },
     { id: 8, title: 'Batting helmet', size: 'Youth', condition: 'New', sport: 'Baseball', seller: 'Chris P.', location: 'Beverly, MA', miles: 2, cost: 0, types: ['Give-away'], delivery: ['In person'] },
@@ -112,7 +112,9 @@
       '<article class="card">' +
         '<div class="photo">' +
           (l.photo
-            ? '<img src="' + esc(l.photo) + '" alt="' + esc(l.title) + '" loading="lazy" decoding="async" onerror="this.remove()">'
+            ? '<img src="' + esc(l.photo) + '" alt="' + esc(l.title) + '"' +
+              (l.photoPosition ? ' style="object-position:' + esc(l.photoPosition) + '"' : '') +
+              ' loading="lazy" decoding="async" onerror="this.remove()">'
             : '') +
           ICON.photo +
           '<button type="button" class="save-btn" aria-pressed="' + saved + '" aria-label="' + (saved ? 'Unsave ' : 'Save ') + esc(l.title) + '" data-action="save" data-value="' + l.id + '">' + ICON.heart + '</button>' +
