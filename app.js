@@ -11,7 +11,7 @@
     { id: 5, title: 'Lacrosse stick', size: 'Youth 37"', condition: 'Fair', sport: 'Lacrosse', seller: 'Tom B.', location: 'Marblehead, MA', miles: 18, cost: 0, types: ['Trade'], delivery: ['Shipped'], photo: 'images/listings/lacrosse-stick.jpg', photoPosition: 'center top' },
     { id: 6, title: 'Football shoulder pads', size: 'Youth M', condition: 'Good', sport: 'Football', seller: 'Alicia W.', location: 'Lynn, MA', miles: 22, cost: 30, types: ['Sale', 'Give-away', 'Trade'], delivery: ['In person'], photo: 'images/listings/football-pads.jpg' },
     { id: 7, title: 'Basketball, size 5', size: 'Ages 9–11', condition: 'Like new', sport: 'Basketball', seller: 'Sam L.', location: 'Swampscott, MA', miles: 4, cost: 8, types: ['Sale'], delivery: ['Shipped', 'In person'], photo: 'images/listings/basketball.jpg' },
-    { id: 8, title: 'Batting helmet', size: 'Youth', condition: 'New', sport: 'Baseball', seller: 'Chris P.', location: 'Beverly, MA', miles: 2, cost: 0, types: ['Give-away'], delivery: ['In person'] },
+    { id: 8, title: 'Batting helmet', size: 'Youth', condition: 'New', sport: 'Baseball', seller: 'Chris P.', location: 'Beverly, MA', miles: 2, cost: 0, types: ['Give-away'], delivery: ['In person'], photo: 'images/listings/batting-helmet.jpg' },
     { id: 9, title: 'Hockey skates', size: 'Youth 3', condition: 'Good', sport: 'Hockey', seller: 'Nina F.', location: 'Wenham, MA', miles: 31, cost: 40, types: ['Sale', 'Trade'], delivery: ['Shipped'] },
     { id: 10, title: 'Soccer ball, size 4', size: 'Ages 8–12', condition: 'Fair', sport: 'Soccer', seller: 'Owen H.', location: 'Salem, MA', miles: 7, cost: 0, types: ['Give-away'], delivery: ['In person'] }
   ];
