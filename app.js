@@ -110,7 +110,11 @@
     const saved = state.saved.includes(l.id);
     return (
       '<article class="card">' +
-        '<div class="photo">' + ICON.photo +
+        '<div class="photo">' +
+          (l.photo
+            ? '<img src="' + esc(l.photo) + '" alt="' + esc(l.title) + '" loading="lazy" decoding="async" onerror="this.remove()">'
+            : '') +
+          ICON.photo +
           '<button type="button" class="save-btn" aria-pressed="' + saved + '" aria-label="' + (saved ? 'Unsave ' : 'Save ') + esc(l.title) + '" data-action="save" data-value="' + l.id + '">' + ICON.heart + '</button>' +
         '</div>' +
         '<div class="price">' + esc(priceOf(l)) + '</div>' +

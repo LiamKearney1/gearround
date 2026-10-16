@@ -1,6 +1,6 @@
 /* GearRound service worker: precaches the app shell so it opens offline.
    Bump VERSION whenever you change any file below so users get the update. */
-const VERSION = 'gearround-v1';
+const VERSION = 'gearround-v2';
 const SHELL = [
   './',
   './index.html',
