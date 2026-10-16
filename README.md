@@ -29,7 +29,17 @@ GearRound is a Progressive Web App. Once the site is live (see below), people ca
 
 Installing needs the site to be served over HTTPS (GitHub Pages does this). It won't install from a file opened directly on your computer.
 
-**When you change the site:** open `sw.js` and bump `VERSION` (for example `gearround-v3` → `gearround-v4`). That tells installed copies to download the new files. If you forget, installed copies keep showing the old version.
+**When you change the site:** run this from the repo folder before you commit:
+
+```sh
+node tools/stamp.mjs
+```
+
+It handles cache busting:
+- It adds a short fingerprint of each file's contents to the CSS and JS links in `index.html` (for example `styles.css?v=1666c4eb`), so browsers download the new file instead of reusing an old saved copy.
+- It updates the service worker's file list and `VERSION` to match, so installed apps pick up the change.
+
+If you add a new file the app needs offline (like a listing photo), add it to the `SHELL` list in `sw.js` first. If you skip the script, installed copies keep showing the old version.
 
 **How people get updates:** each time the app is opened or brought back to the foreground, it checks for a new version. When one has downloaded, a banner appears: "A new version of GearRound is ready." **Refresh** reloads into the new version right away. **Later** hides the banner, and the update applies the next time the app is fully closed and reopened.
 
@@ -40,6 +50,7 @@ Installing needs the site to be served over HTTPS (GitHub Pages does this). It w
 - `app.js`: sample data, filters and the four pages
 - `manifest.webmanifest`: app name, colors and icons used when installing
 - `sw.js`: service worker that caches the app so it works offline
+- `tools/stamp.mjs`: cache-busting script (run after changes)
 - `icons/`: app icons (`icon.svg` is the source; the PNGs are generated from it)
 
 ## Run locally

@@ -1,11 +1,12 @@
 /* GearRound service worker: precaches the app shell so it opens offline.
-   Bump VERSION whenever you change any file below so users get the update. */
-const VERSION = 'gearround-v4';
+   VERSION and the ?v= hashes are set by `node tools/stamp.mjs`; run it after
+   changing any file below (add new files to SHELL first) so users get the update. */
+const VERSION = 'gearround-dc86b032ca';
 const SHELL = [
   './',
   './index.html',
-  './styles.css',
-  './app.js',
+  './styles.css?v=1666c4eb',
+  './app.js?v=297c8cce',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/icon-192.png',
