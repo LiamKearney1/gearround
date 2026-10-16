@@ -1,6 +1,6 @@
 /* GearRound service worker: precaches the app shell so it opens offline.
    Bump VERSION whenever you change any file below so users get the update. */
-const VERSION = 'gearround-v3';
+const VERSION = 'gearround-v4';
 const SHELL = [
   './',
   './index.html',
@@ -12,7 +12,8 @@ const SHELL = [
   './icons/icon-512.png',
   './icons/maskable-512.png',
   './icons/apple-touch-icon.png',
-  './icons/favicon-32.png'
+  './icons/favicon-32.png',
+  './images/listings/baseball-glove.jpg'
 ];
 const FONT_CACHE = 'gearround-fonts';
 

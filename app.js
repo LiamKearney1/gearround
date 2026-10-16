@@ -4,7 +4,7 @@
 
   // ---------- Sample data ----------
   const LISTINGS = [
-    { id: 1, title: 'Baseball glove, 11"', size: 'Ages 7–9', condition: 'Good', sport: 'Baseball', seller: 'Jen K.', location: 'Beverly, MA', miles: 3, cost: 15, types: ['Sale', 'Trade'], delivery: ['In person'] },
+    { id: 1, title: 'Baseball glove, 11"', size: 'Ages 7–9', condition: 'Good', sport: 'Baseball', seller: 'Jen K.', location: 'Beverly, MA', miles: 3, cost: 15, types: ['Sale', 'Trade'], delivery: ['In person'], photo: 'images/listings/baseball-glove.jpg' },
     { id: 2, title: 'Soccer cleats', size: 'Youth size 2', condition: 'Like new', sport: 'Soccer', seller: 'Marcus T.', location: 'Salem, MA', miles: 6, cost: 0, types: ['Give-away'], delivery: ['In person'] },
     { id: 3, title: 'Hockey helmet w/ cage', size: 'Youth S', condition: 'Good', sport: 'Hockey', seller: 'Dana R.', location: 'Peabody, MA', miles: 9, cost: 25, types: ['Sale'], delivery: ['Shipped', 'In person'] },
     { id: 4, title: 'Shin guards (2 pairs)', size: 'Ages 5–7', condition: 'Well loved', sport: 'Soccer', seller: 'Priya S.', location: 'Danvers, MA', miles: 12, cost: 0, types: ['Give-away', 'Trade'], delivery: ['In person'] },
